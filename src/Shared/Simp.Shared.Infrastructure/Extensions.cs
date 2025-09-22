@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Serilog;
 using Simp.Shared.Abstractions.Primitives;
 using Simp.Shared.Infrastructure.Routing;
+using Simp.Shared.Infrastructure.Traces;
 using System.Reflection;
 
 namespace Simp.Shared.Infrastructure;
@@ -24,6 +25,9 @@ internal static class Extensions
         {
             cb.RegisterAssemblyTypes(typeof(IMediator).GetTypeInfo().Assembly).AsImplementedInterfaces();
         });
+
+        builder.UseTracing();
+
     }
 
     public static void UseInfrastructure(this WebApplication app)

@@ -14,4 +14,10 @@
 	  <ProjectReference Include="..\Simp.Shared.Abstractions\Simp.Shared.Abstractions.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.12.0" />
+	  <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.12.0" />
+	</ItemGroup>
+
 </Project>
