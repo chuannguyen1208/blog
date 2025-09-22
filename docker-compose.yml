@@ -1,0 +1,42 @@
+version: '3.4'
+
+services:
+  simp.bootstrapper:
+    image: ${DOCKER_REGISTRY-}simpbootstrapper
+    container_name: simpbootstrapper
+    build:
+      context: .
+      dockerfile: src/Bootstrapper/Simp.Bootstrapper/Dockerfile
+    environment:
+      - ConnectionStrings__blog=Server=sqlserver,1433;Database=blog;User Id=sa;Password=Pass@word;MultipleActiveResultSets=True;TrustServerCertificate=True;
+    networks:
+     - simp
+
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    ports:
+      - 1433:1433
+    environment:
+      - SA_PASSWORD=Pass@word
+      - ACCEPT_EULA=Y
+    networks:
+      - simp
+
+  rabbitmq:
+    image: "rabbitmq:3.13"
+    container_name: rabbitmq
+    hostname: rmq
+    ports:
+      - "5672:5672"  # RabbitMQ default port
+      - "15672:15672"  # RabbitMQ management UI port
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+    networks:
+      - simp
+
+networks:
+  simp:
+    driver: bridge

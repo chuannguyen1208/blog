@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Shared\Simp.Shared.Abstractions\Simp.Shared.Abstractions.csproj" />
+		<ProjectReference Include="..\Simp.Modules.Blogs.Contracts\Simp.Modules.Blogs.Contracts.csproj" />
+		<ProjectReference Include="..\Simp.Modules.Blogs.Domain\Simp.Modules.Blogs.Domain.csproj" />
+	</ItemGroup>
+
+</Project>
